@@ -4,8 +4,8 @@
 # Modified by : msy2008 (https://github.com/msy2008/yiimp_install_scrypt)
 
 # Program:
-#   Install yiimp on Ubuntu 16.04/18.04 running Nginx, MariaDB, and php7.2
-#   v1.0 (updated March 2024)
+#   Install yiimp on Ubuntu 24.04-24.10 running Nginx, MariaDB, and php8.4
+#   v3.0 (updated March 2024)
 #
 ################################################################################
 
@@ -44,8 +44,8 @@
     clear
     echo
     echo -e "$GREEN************************************************************************$COL_RESET"
-    echo -e "$GREEN Yiimp Install Script v1.0 $COL_RESET"
-    echo -e "$GREEN Install yiimp on Ubuntu 16.04/18.04 running Nginx, MariaDB, and php7.2 $COL_RESET"
+    echo -e "$GREEN Yiimp Install Script v3.0 $COL_RESET"
+    echo -e "$GREEN Install yiimp on Ubuntu 24.04/24.10 running Nginx, MariaDB, and php8.4 $COL_RESET"
     echo -e "$GREEN************************************************************************$COL_RESET"
     echo
     sleep 3
@@ -62,7 +62,7 @@
     sudo apt -y upgrade
     sudo apt -y autoremove
     sudo apt-get install -y software-properties-common
-    sudo apt -y install dialog python3 python3-pip acl nano apt-transport-https
+    sudo apt -y install dialog python8 python8-pip acl nano apt-transport-https
     echo -e "$GREEN Done...$COL_RESET"
 
 
@@ -159,10 +159,10 @@
     echo -e "$GREEN Done...$COL_RESET"
 
 
-    # Installing Installing php7.2
+    # Installing Installing php8.3
     echo
     echo
-    echo -e "$CYAN => Installing php7.2 : $COL_RESET"
+    echo -e "$CYAN => Installing php8.3 : $COL_RESET"
     echo
     sleep 3
 
@@ -173,20 +173,20 @@
     sudo apt -y update
 
     if [[ ("$DISTRO" == "16") ]]; then
-    sudo apt -y install php7.2-fpm php7.2-opcache php7.2 php7.2-common php7.2-gd php7.2-mysql php7.2-imap php7.2-cli \
-    php7.2-cgi php-pear php-auth imagemagick libruby php7.2-curl php7.2-intl php7.2-pspell mcrypt\
-    php7.2-recode php7.2-sqlite3 php7.2-tidy php7.2-xmlrpc php7.2-xsl memcached php-memcache php-imagick php-gettext php7.2-zip php7.2-mbstring
+    sudo apt -y install php8.4-fpm php8.4-opcache php8.4 php8.4-common php8.4-gd php8.4-mysql php8.4-imap php8.4-cli \
+    php8.4-cgi php-pear php-auth imagemagick libruby php8.4-curl php8.4-intl php8.3-pspell mcrypt\
+    php8.4-recode php8.4-sqlite3 php8.4-tidy php8.4-xmlrpc php8.4-xsl memcached php-memcache php-imagick php-gettext php8.4-zip php8.4-mbstring
     #sudo phpenmod mcrypt
     #sudo phpenmod mbstring
     else
-    sudo apt -y install php7.2-fpm php7.2-opcache php7.2 php7.2-common php7.2-gd php7.2-mysql php7.2-imap php7.2-cli \
-    php7.2-cgi php-pear imagemagick libruby php7.2-curl php7.2-intl php7.2-pspell mcrypt\
-    php7.2-recode php7.2-sqlite3 php7.2-tidy php7.2-xmlrpc php7.2-xsl memcached php7.2-memcache php7.2-memcached php-imagick php-gettext php7.2-zip php7.2-mbstring \
+    sudo apt -y install php8.4-fpm php8.4-opcache php8.4 php8.4-common php8.4-gd php8.4-mysql php8.4-imap php8.4-cli \
+    php8.4-cgi php-pear imagemagick libruby php8.4-curl php8.4-intl php8.2-pspell mcrypt\
+    php8.4-recode php8.4-sqlite3 php8.4-tidy php8.4-xmlrpc php8.4-xsl memcached php8.4-memcache php8.4-memcached php-imagick php-gettext php8.4-zip php8.4-mbstring \
     libpsl-dev libnghttp2-dev
     fi
     sleep 5
-    sudo systemctl start php7.2-fpm
-    sudo systemctl status php7.2-fpm | sed -n "1,3p"
+    sudo systemctl start php8.4-fpm
+    sudo systemctl status php8.4-fpm | sed -n "1,3p"
     sleep 15
     echo
     echo -e "$GREEN Done...$COL_RESET"
@@ -496,7 +496,7 @@
 
         location ~ ^/index\.php$ {
             fastcgi_split_path_info ^(.+\.php)(/.+)$;
-            fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+            fastcgi_pass unix:/var/run/php/php8.4-fpm.sock;
             fastcgi_index index.php;
             include fastcgi_params;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -627,7 +627,7 @@
 
             location ~ ^/index\.php$ {
                 fastcgi_split_path_info ^(.+\.php)(/.+)$;
-                fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+                fastcgi_pass unix:/var/run/php/php8.4-fpm.sock;
                 fastcgi_index index.php;
                 include fastcgi_params;
                 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -658,7 +658,7 @@
             deny all;
     }
         location ~ /phpmyadmin/(.+\.php)$ {
-            fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+            fastcgi_pass unix:/run/php/php8.4-fpm.sock;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             include fastcgi_params;
             include snippets/fastcgi-php.conf;
@@ -712,7 +712,7 @@
 
         location ~ ^/index\.php$ {
             fastcgi_split_path_info ^(.+\.php)(/.+)$;
-            fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+            fastcgi_pass unix:/var/run/php/php8.4-fpm.sock;
             fastcgi_index index.php;
             include fastcgi_params;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -749,7 +749,7 @@
             deny all;
     }
         location ~ /phpmyadmin/(.+\.php)$ {
-            fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+            fastcgi_pass unix:/run/php/php8.4-fpm.sock;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             include fastcgi_params;
             include snippets/fastcgi-php.conf;
@@ -761,7 +761,7 @@
     sudo ln -s /etc/nginx/sites-available/$server_name.conf /etc/nginx/sites-enabled/$server_name.conf
     sudo ln -s /var/web /var/www/$server_name/html
 	sudo ln -s /var/stratum/config /var/web/list-algos
-    sudo systemctl reload php7.2-fpm.service
+    sudo systemctl reload php8.4-fpm.service
     sudo systemctl restart nginx.service
     echo -e "$GREEN Done...$COL_RESET"
 
@@ -821,7 +821,7 @@
             # strengthen ssl security
             ssl_certificate /etc/letsencrypt/live/'"${server_name}"'/fullchain.pem;
             ssl_certificate_key /etc/letsencrypt/live/'"${server_name}"'/privkey.pem;
-            ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+            ssl_protocols TLSv1.1 TLSv1.2 TLSv1.3;
             ssl_prefer_server_ciphers on;
             ssl_session_cache shared:SSL:10m;
             ssl_ciphers "EECDH+AESGCM:EDH+AESGCM:ECDHE-RSA-AES128-GCM-SHA256:AES256+EECDH:DHE-RSA-AES128-GCM-SHA256:AES256+EDH:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA256:ECDHE-RSA-AES256-SHA:ECDHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES128-SHA256:DHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:DES-CBC3-SHA:HIGH:!aNULL:!eNULL:!EXPORT:!DES:!MD5:!PSK:!RC4";
@@ -844,7 +844,7 @@
 
             location ~ ^/index\.php$ {
                 fastcgi_split_path_info ^(.+\.php)(/.+)$;
-                fastcgi_pass unix:/var/run/php/php7.2-fpm.sock;
+                fastcgi_pass unix:/var/run/php/php8.4-fpm.sock;
                 fastcgi_index index.php;
                 include fastcgi_params;
                 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
@@ -877,7 +877,7 @@
             deny all;
     }
         location ~ /phpmyadmin/(.+\.php)$ {
-            fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+            fastcgi_pass unix:/run/php/php8.4-fpm.sock;
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             include fastcgi_params;
             include snippets/fastcgi-php.conf;
@@ -890,7 +890,7 @@
     echo -e "$GREEN Done...$COL_RESET"
 
     fi
-    sudo systemctl reload php7.2-fpm.service
+    sudo systemctl reload php8.4-fpm.service
     sudo systemctl restart nginx.service
     fi
 
@@ -935,7 +935,7 @@
     user=root
     password='"${rootpasswd}"'
     ' | sudo -E tee ~/.my.cnf >/dev/null 2>&1
-      sudo chmod 0600 ~/.my.cnf
+      sudo chmod 0700 ~/.my.cnf
 
 
     # Create keys file
@@ -997,7 +997,7 @@
     sudo mysql --defaults-group-suffix=host1 --force < 2017-10-bookmarks.sql
     sudo mysql --defaults-group-suffix=host1 --force < 2017-11-segwit.sql
     sudo mysql --defaults-group-suffix=host1 --force < 2018-01-stratums_ports.sql
-    sudo mysql --defaults-group-suffix=host1 --force < 2018-02-coins_getinfo.sql
+    sudo mysql --defaults-group-suffix=host1 --force < 2025-01-coins_getinfo.sql
     echo -e "$GREEN Done...$COL_RESET"
 
 
@@ -1157,20 +1157,20 @@
     sudo mkdir /var/log/yiimp
     sudo touch /var/log/yiimp/debug.log
     sudo chgrp www-data /var/log/yiimp -R
-    sudo chmod 775 /var/log/yiimp -R
+    须藤 chmod 775 /var/log/yiimp -R
 
     sudo chgrp www-data /var/stratum -R
-    sudo chmod 775 /var/stratum
+    须藤 chmod 775 /var/stratum
 
     sudo mkdir -p /var/yiimp/sauv
     sudo chgrp www-data /var/yiimp -R
-    sudo chmod 775 /var/yiimp -R
+    须藤 chmod 775 /var/yiimp -R
 
 
-    #Add to contrab screen-scrypt
-    (crontab -l 2>/dev/null; echo "@reboot sleep 20 && /etc/screen-scrypt.sh") | crontab -
+    #添加到contrab screen-scrypt
+    (crontab -l  2 >/dev/null; echo "@reboot sleep 20 && /etc/screen-scrypt.sh" ) | crontab -
 
-    #fix error screen main "service"
+    #修复错误屏幕主“服务”
     sudo sed -i 's/service $webserver start/sudo service $webserver start/g' /var/web/yaamp/modules/thread/CronjobController.php
     sudo sed -i 's/service nginx stop/sudo service nginx stop/g' /var/web/yaamp/modules/thread/CronjobController.php
 
@@ -1182,54 +1182,54 @@
     sudo mv $HOME/yiimp/ $HOME/yiimp-install-only-do-not-run-commands-from-this-folder
     sudo rm -rf /var/log/nginx/*
 
-    #Hold update OpenSSL
-    #If you want remove the hold : sudo apt-mark unhold openssl
-    sudo apt-mark hold openssl
+    #保持更新 OpenSSL
+    #如果你想删除保留： sudo apt-mark unhold openssl
+    sudo apt-mark 保留 openssl
 
-    #Restart service
-    sudo systemctl restart cron.service
-    sudo systemctl restart mysql
-    sudo systemctl status mysql | sed -n "1,3p"
-    sudo systemctl restart nginx.service
-    sudo systemctl status nginx | sed -n "1,3p"
-    sudo systemctl restart php7.2-fpm.service
-    sudo systemctl status php7.2-fpm | sed -n "1,3p"
+    #重启服务
+    sudo systemctl 重新启动 cron.service
+    sudo systemctl 重新启动 mysql
+    sudo systemctl 状态 mysql | sed -n  “1,3p”
+    sudo systemctl 重新启动 nginx.service
+    sudo systemctl 状态 nginx | sed -n  “1,3p”
+    sudo systemctl 重新启动 php7.2-fpm.service
+    sudo systemctl 状态 php7.2-fpm | sed -n  “1,3p”
 
 
-    echo
-    echo -e "$GREEN Done...$COL_RESET"
-    sleep 3
+    回声
+    echo -e  " $GREEN完成... $COL_RESET "
+    睡觉3
 
-    echo
-    echo
-    echo
-    echo -e "$GREEN***************************$COL_RESET"
-    echo -e "$GREEN Yiimp Install Script v1.0 $COL_RESET"
-    echo -e "$GREEN Finish !!! $COL_RESET"
-    echo -e "$GREEN***************************$COL_RESET"
-    echo
-    echo
-    echo
-    echo -e "$CYAN Whew that was fun, just some reminders. $COL_RESET"
-    echo -e "$RED Your mysql information is saved in ~/.my.cnf. $COL_RESET"
-    echo
-    echo -e "$RED Yiimp at : http://"$server_name" (https... if SSL enabled)"
-    echo -e "$RED Yiimp Admin at : http://"$server_name"/site/AdminPanel (https... if SSL enabled)"
-    echo -e "$RED Yiimp phpMyAdmin at : http://"$server_name"/phpmyadmin (https... if SSL enabled)"
-    echo
-    echo -e "$RED If you want change 'AdminPanel' to access Panel Admin : Edit this file : /var/web/yaamp/modules/site/SiteController.php"
-    echo -e "$RED Line 11 => change 'AdminPanel' and use the new address"
-    echo
-    echo -e "$CYAN Please make sure to change your public keys / wallet addresses in the /var/web/serverconfig.php file. $COL_RESET"
-    echo -e "$CYAN Please make sure to change your private keys in the /etc/yiimp/keys.php file. $COL_RESET"
-    echo
-    echo -e "$CYAN TUTO Youtube : https://www.youtube.com/watch?v=qE0rhfJ1g2k $COL_RESET"
-    echo
-    echo -e "$RED***************************************************$COL_RESET"
-    echo -e "$RED YOU MUST REBOOT NOW  TO FINALIZE INSTALLATION !!! $COL_RESET"
-    echo -e "$RED***************************************************$COL_RESET"
-    echo -e "$RED if u have white page blank on site check          $COL_RESET"
-    echo -e "$RED php7.2-memcache | php7.2-memcached | php7.2-fpm   $COL_RESET"
-    echo -e "$RED try just restart them first...                    $COL_RESET"
-    echo -e "$RED***************************************************$COL_RESET"
-    echo
+    回声
+    回声
+    回声
+    echo -e  " $GREEN **************************** $COL_RESET "
+    echo -e  " $GREEN Yiimp 安装脚本 v3.0 $COL_RESET "
+    echo -e  " $GREEN完成!!! $COL_RESET "
+    echo -e  " $GREEN **************************** $COL_RESET "
+    回声
+    回声
+    回声
+    echo -e  " $CYAN哦，这很有趣，只是一些提醒。$COL_RESET "
+    echo -e   " $RED你的mysql信息保存在~/.my.cnf中。$COL_RESET "
+    回声
+    echo -e  " $RED Yiimp at : http://" $server_name " (https...如果启用了 SSL)"
+    echo -e  " $RED Yiimp Admin at : http://" $server_name "/site/AdminPanel (https...如果启用了 SSL)"
+    echo -e  " $RED Yiimp phpMyAdmin at : http://" $server_name "/phpmyadmin (https...如果启用了 SSL)"
+    回声
+    echo -e  " $RED如果您想更改 'AdminPanel' 以访问面板管理：编辑此文件：/var/web/yaamp/modules/site/SiteController.php"
+    echo -e  " $RED第 11 行 => 更改 'AdminPanel' 并使用新地址"
+    回声
+    echo -e   " $CYAN请确保在 /var/web/serverconfig.php 文件中更改您的钱包地址。$COL_RESET "
+    echo -e    " $CYAN请确保更改 /etc/yiimp/keys.php 文件中的私钥。$COL_RESET "
+    回声
+    回声-e   " $CYAN TUTO Youtube : https://www.youtube.com/watch?v=qE0rhfJ1g2k $COL_RESET "
+    回声
+    echo -e  “ $红色**************************************************** * ****** $COL_RESET “
+    echo -e "  $RED您必须立即重新启动才能完成安装!!! $COL_RESET  "
+    echo -e "  $RED ******************************************** **** ****** $COL_RESET “
+    echo -e   " $RED如果您存在白页空白，请检查          $COL_RESET "
+    echo -e   " $RED php8.4-memcache | php8.4-memcached | php8.4-fpm     $COL_RESET "
+    echo -e   " $RED尝试先重新启动它们...                      $COL_RESET "
+“  $红色 ******************************************** **** ****** $COL_RESET “
+    回声
