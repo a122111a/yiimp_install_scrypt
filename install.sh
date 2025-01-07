@@ -1,7 +1,7 @@
 #!/bin/bash
 ################################################################################
 # Original Author:   Kudaraidee
-# Modified by : msy2008 (https://github.com/msy2008/yiimp_install_scrypt)
+# Modified by : msy2008 (https://github.com/a122111a/yiimp_install_scrypt)
 
 # Program:
 #   Install yiimp on Ubuntu 24.04-24.10 running Nginx, MariaDB, and php8.4
@@ -1192,8 +1192,8 @@
     sudo systemctl 状态 mysql | sed -n  “1,3p”
     sudo systemctl 重新启动 nginx.service
     sudo systemctl 状态 nginx | sed -n  “1,3p”
-    sudo systemctl 重新启动 php7.2-fpm.service
-    sudo systemctl 状态 php7.2-fpm | sed -n  “1,3p”
+    sudo systemctl 重新启动 php8.4-fpm.service
+    sudo systemctl 状态 php8.4-fpm | sed -n  “1,3p”
 
 
     回声
