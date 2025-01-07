@@ -4,22 +4,22 @@ Site : https://www.xavatar.com
 
 Discord : https://discord.gg/zcCXjkQ
 
-TUTO Youtube (16.04 - Without SSL) : https://www.youtube.com/watch?v=vdBCw6_cyig
+TUTO Youtube (24.04 - Without SSL) : https://www.youtube.com/watch?v=vdBCw6_cyig
 
-TUTO Youtube (16.04 - With SSL) : https://www.youtube.com/watch?v=fWwGow_i-Vw
+TUTO Youtube (24.04 - With SSL) : https://www.youtube.com/watch?v=fWwGow_i-Vw
 
 Official Yiimp (used in this script for Yiimp Installation): https://github.com/tpruvot/yiimp
 
-Install script for yiimp on Ubuntu 17.10 : https://github.com/xavatar/yiimp_install_scrypt_ubuntu17.10
+Install script for yiimp on Ubuntu 24.10 : https://github.com/xavatar/yiimp_install_scrypt_ubuntu17.10
 
-Install script for yiimp on Ubuntu 18.04 : https://github.com/xavatar/yiimp_install_scrypt_ubuntu18.04
+Install script for yiimp on Ubuntu 24.04 : https://github.com/xavatar/yiimp_install_scrypt_ubuntu18.04
 
 
 ***********************************
 
-## Install script for yiimp on Ubuntu Server 16.04
+## Install script for yiimp on Ubuntu Server 24.04
 
-USE THIS SCRIPT ON FRESH INSTALL UBUNTU Server 16.04 !
+USE THIS SCRIPT ON FRESH INSTALL UBUNTU Server 24.04 !
 
 Connect on your VPS =>
 - adduser pool
