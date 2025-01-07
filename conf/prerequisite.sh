@@ -10,10 +10,10 @@ echo
 echo -e "$CYAN => Check prerequisite : $COL_RESET"
 echo
 
-if [ "`lsb_release -d | sed 's/.*:\s*//' | sed 's/18\.04\.[0-9]/24.04/' `" == "Ubuntu 24.04 LTS" ]; then
+if [ "`lsb_release -d | sed 's/.*:\s*//' | sed 's/24\.04\.[0-9]/24.04/' `" == "Ubuntu 24.04 LTS" ]; then
   DISTRO=18
   sudo chmod g-w /etc /etc/default /usr
-else [ "`lsb_release -d | sed 's/.*:\s*//' | sed 's/16\.04\.[0-9]/24.04/' `" != "Ubuntu 24.04 LTS" ];
+else [ "`lsb_release -d | sed 's/.*:\s*//' | sed 's/24\.04\.[0-9]/24.04/' `" != "Ubuntu 24.04 LTS" ];
   DISTRO=16
 fi
 
