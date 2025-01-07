@@ -1,4 +1,4 @@
-# Yiimp_install_scrypt v1.0 (update msy2008, 2024)
+# Yiimp_install_scrypt v3.0 (update a122111a, 2025)
 
 Site : http://amxpool.com:8282
 
@@ -14,13 +14,13 @@ Discord: https://discord.gg/3Qq2neb
 
 Telegram: https://t.me/infinitecoin_IFC
 
-TUTO Youtube (16.04 / 18.04 - Without SSL) : https://www.youtube.com/watch?v=qE0rhfJ1g2k
+TUTO Youtube (24.04 / 24.10 - Without SSL) : https://www.youtube.com/watch?v=qE0rhfJ1g2k
 
-msy2008 Yiimp (used in this script for Yiimp Installation): https://github.com/msy2008/yiimp
+a122111a Yiimp (used in this script for Yiimp Installation): https://github.com/a122111a/yiimp
 
-msy2008 Stratum (Use separately developed stratum): https://github.com/msy2008/stratum-full
+a122111a Stratum (Use separately developed stratum): https://github.com/a122111a/stratum-full
 
-msy2008 Yiimp Installer : https://github.com/msy2008/yiimp_install_scrypt
+a122111a Yiimp Installer : https://github.com/a122111a/yiimp_install_scrypt
 
 Original Yiimp : https://github.com/tpruvot/yiimp
 
@@ -29,11 +29,11 @@ Original Yiimp Installer : https://github.com/xavatar/yiimp_install_scrypt
 
 ***********************************
 
-## Install script for yiimp on Ubuntu Server 16.04 / 18.04 (use msy2008's Yiimp)
+## Install script for yiimp on Ubuntu Server 24.04 / 24.10 (use a122111a's Yiimp)
 
-USE THIS SCRIPT ON FRESH INSTALL UBUNTU Server 16.04 / 18.04 !
+USE THIS SCRIPT ON FRESH INSTALL UBUNTU Server 24.04 / 24.10 !
 
-## Some people report that it can also be installed on Ubuntu 20.04, but I haven't tried it.
+## Some people report that it can also be installed on Ubuntu 24.04, but I haven't tried it.
 ## Note: Enable root and log in to your Ubuntu system as root!!!
 
 * Connect on your VPS =>
@@ -74,7 +74,7 @@ sudo apt-get install build-essential libssl-dev curl git-core openssh-server
 cd ~
 ```
 ```
-git clone https://github.com/msy2008/yiimp_install_scrypt.git
+git clone https://github.com/a122111a/yiimp_install_scrypt.git
 ```
 ```
 cd yiimp_install_scrypt
@@ -89,7 +89,7 @@ bash install.sh
  
 1.Download the Yiimp stratum
 ```
-git clone https://github.com/msy2008/stratum-full.git
+git clone https://github.com/a122111a/stratum-full.git
 ```
 
 2.Compile
